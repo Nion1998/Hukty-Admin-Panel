@@ -1,0 +1,594 @@
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&family=Heebo:wght@200;500;600&family=Inter:wght@400;700&family=Lato&family=Open+Sans:wght@600&family=Poppins:ital,wght@0,300;0,700;1,400&family=Public+Sans:wght@100;500;800;900&family=Roboto+Condensed&family=Roboto+Mono:wght@300&display=swap");
+
+/* Setting global styles for the body */
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+/* Removing text decoration from anchor tags */
+a {
+  text-decoration: none !important;
+  color: #444444 !important;
+}
+
+/* Styling for Custom Primary Background Color */
+.Custom-bg-Primary {
+  background-color: #00b2ff;
+  color: #ffffff;
+}
+
+.Custom-bg-light {
+  background-color: #ffffff !important;
+}
+
+.text-color-263238 {
+  color: #263238 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.text-color-00B2FF {
+  color: #00b2ff !important;
+  font-family: "Inter", sans-serif;
+}
+
+.text-color-00C300 {
+  color: #00c300;
+}
+
+/* Styling for font */
+.fs-27 {
+  font-size: 27px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  color: #444444 !important;
+}
+
+.fs-16 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #444444;
+  font-family: "Inter", sans-serif;
+}
+
+.fs-16-600 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #444444e1 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+/* Side bar font  */
+
+.fs-23 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444444;
+  font-family: "Inter", sans-serif;
+  line-height: 0;
+}
+
+.fs-23-400 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #444444ab;
+  font-family: "Inter", sans-serif;
+}
+
+.fs-18 {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(68, 68, 68, 0.8);
+  font-family: "Inter", sans-serif;
+}
+
+.fs-18-600 {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(68, 68, 68, 0.8);
+  font-family: "Inter", sans-serif;
+  line-height: 18px;
+  padding-bottom: 7px;
+}
+
+.fs-14-400 {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #444444b6 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.fs-11-400 {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(68, 68, 68, 0.8);
+  font-family: "Inter", sans-serif;
+  line-height: 10px;
+}
+
+.fs-12-600 {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(68, 68, 68, 0.8);
+  font-family: "Inter", sans-serif;
+  line-height: 10px;
+}
+
+.path-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #444444d7;
+  font-family: "Inter", sans-serif;
+}
+
+.path-text-span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4444446d;
+  font-family: "Inter", sans-serif;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #444444d7;
+  font-family: "Inter", sans-serif;
+}
+
+/* Styling for simple input section */
+input {
+  height: 46px;
+  background-color: #ffffff !important;
+  border: 1px solid #44444472 !important;
+  border-radius: 8px !important;
+  color: #444444;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 7px 0 !important;
+}
+
+select {
+  height: 46px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #44444433 !important;
+  border-radius: 8px !important;
+  color: #444444;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px 0 !important;
+}
+
+textarea {
+  height: 100px;
+  background-color: #ffffff !important;
+  border: 1px solid #44444433 !important;
+  border-radius: 8px !important;
+  color: #444444 !important;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px 0 !important;
+  padding-top: 10px !important;
+}
+
+.simple-input2 input {
+  height: 40px;
+  background-color: #ffffff !important;
+  border: 1px solid #44444472 !important;
+  border-radius: 8px !important;
+  color: #444444de;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0 !important;
+  padding-bottom: 10px !important;
+}
+
+.simple-input2 select {
+  height: 40px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #44444472 !important;
+  border-radius: 8px !important;
+  color: #444444;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0 !important;
+}
+
+.simple-input2 .multi select {
+  height: 150px !important;
+}
+input::placeholder {
+  font-family: Heebo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.0025em;
+  text-align: left;
+  color: #b9b5b5 !important;
+}
+
+.vi {
+  top: 100px !important;
+  right: 0;
+}
+
+/* Default styles for all browsers */
+.simple-input input.form-control {
+  padding: 0px 12px 2px 16px !important;
+  transition: background-color 0.3s ease-in-out;
+  /* Add a smooth transition */
+}
+
+/* Styles specifically for Mozilla Firefox */
+@-moz-document url-prefix() {
+  input.form-control {
+    padding: 0px 12px 0px 12px !important;
+    background-color: none !important;
+    transition: background-color 0.3s none;
+    /* Change background color for Firefox */
+  }
+}
+
+/* Add a hover effect for all browsers */
+.simple-input input.form-control:hover {
+  background-color: None !important;
+  /* Change background color on hover */
+}
+
+/* Styling for submit button */
+.Submit_button {
+  height: 42px;
+  width: fit-content;
+  background-color: #f23534 !important;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.Submit_button-outline {
+  height: 42px;
+  width: fit-content;
+  background-color: #ffffff !important;
+  color: #00b2ff !important;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  border: 1px solid #00b2ff;
+}
+
+/* Styling for submit button with hold class */
+.Submit_button-hold {
+  height: 42px;
+  width: 100%;
+  background-color: #8bdcff !important;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Styling for material UI input */
+.css-z4k887 > :not(style) {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Styling for material UI input - MuiOutlinedInput-input */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 12px 10px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/* Styling for material UI input - MuiInputLabel-root */
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  top: -4px !important;
+}
+
+/* Styling for material UI input - MuiOutlinedInput-root */
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 8px !important;
+}
+
+/* Styling for material UI input - MuiTextField-root */
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.div-profile-image {
+  height: 113px;
+  width: 113px;
+  padding: 8px;
+  border: solid 2px #44444434;
+  border-radius: 5px;
+}
+
+.div-profile-image img {
+  width: 100%;
+  height: 94px;
+  border-radius: 5px;
+}
+
+.profile-photo img {
+  height: 40px;
+}
+.gray input {
+  border: none !important;
+  background-color: #d9d9d9dd !important;
+}
+
+.gray textarea {
+  border: none !important;
+  background-color: #d9d9d9dd !important;
+}
+
+.dropzone {
+  height: 88px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1.5px dashed #444444e4 !important;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+  color: #44444480 !important;
+}
+
+.dropzone img {
+  height: 80px;
+  width: 88px;
+}
+
+.imageInput img {
+  object-fit: contain;
+}
+.imageUpload img {
+  object-fit: contain;
+}
+
+.main-div {
+  border: solid 1.5px #44444434;
+  border-radius: 8px;
+  z-index: -1;
+}
+
+/* table */
+
+.blank_row {
+  height: 55px !important;
+  /* overwrites any other rules */
+  background-color: #ffffff;
+  border: solid 1.5px #44444434;
+  border-left: 0;
+  border-right: 0;
+  width: 100% !important;
+}
+
+.blank_row td {
+  padding: 0 0 0 8px !important;
+}
+
+.table-search input {
+  height: 45px;
+  border: solid 2px #44444434;
+  border-radius: 8px;
+  margin: 10px 20px 15px 20px;
+  padding: 0 0 3px 45px !important;
+  width: 400px;
+}
+
+@-moz-document url-prefix() {
+  .table-search input {
+    padding: 0px 0px 0px !important;
+  }
+
+  .search input {
+    padding: 0px 0px 0px 40px !important;
+  }
+
+  ::placeholder {
+    padding-top: 0px !important;
+  }
+}
+
+.order .search-icon-table {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 20px;
+  color: #44444484;
+}
+
+.table-img {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+td .faq {
+  max-width: 10px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.overflow-table {
+  overflow-x: auto !important;
+}
+
+.custom-table {
+  border-collapse: collapse !important;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  min-width: 100% !important;
+}
+
+.custom-table .active {
+  height: 24px;
+  width: 60px;
+  border: none !important;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #ddfbdd;
+  color: #00b200;
+  border-radius: 3px;
+}
+
+.custom-table .inActive {
+  height: 24px;
+  width: 60px;
+  border: none !important;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #ffd8d8;
+  color: #ba0000;
+  border-radius: 3px;
+}
+
+.acton-btn button {
+  height: 37px;
+  width: 37px !important;
+  border: 1px solid #444444ab !important;
+  color: #444444c4;
+  margin: 0 5px 0 5px;
+  border-radius: 7px;
+  background-color: #fff;
+  padding: 0 0 1px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+input.checkbox {
+  height: 20px;
+  width: 20px;
+}
+
+.active-status {
+  background-color: #00b2ff !important;
+  color: #ffffff !important;
+}
+
+.currency select {
+  padding-left: 60px;
+}
+
+.selected-flag-container {
+  position: absolute;
+  height: 20px;
+  width: 50px;
+  top: 28px;
+  left: 8px;
+}
+
+.selected-flag-img {
+  height: 20px;
+  width: 50px;
+}
+
+.order {
+  z-index: 1 !important;
+}
+
+.dashboard-chart {
+  height: 60vh !important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: none !important;
+}
+
+.dropdown-menu a:hover {
+  background-color: #dbdadaa4 !important;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+  .custom-table {
+    min-width: 1000px !important;
+  }
+
+  td {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .table-search input {
+    /* margin: 10px 20px 15px 20px; */
+    z-index: -1;
+    margin: auto;
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .order .table-search input {
+    width: 90% !important;
+    /* margin: 10px 20px 15px 20px; */
+    margin-left: 10px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .order .search-icon-table {
+    left: 20px;
+  }
+
+  .search-icon-table {
+    position: absolute;
+    top: 5px;
+    left: 50px;
+    font-size: 20px;
+    color: #44444484;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .search-icon-table {
+    left: 30px;
+  }
+
+  .table-drop {
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .Submit_button-outline {
+    width: 100%;
+  }
+}
+
+.z-0 {
+  z-index: -1 !important;
+}
+
+.z-5 {
+  z-index: 2 !important;
+}
+
+.z-10 {
+  z-index: 10 !important;
+}
+
+.w-200 {
+  width: 150px;
+}

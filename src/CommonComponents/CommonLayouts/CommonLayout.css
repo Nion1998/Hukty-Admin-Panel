@@ -1,0 +1,20 @@
+.common-container {
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.form-area {
+  width: 514px;
+}
+
+@media screen and (max-width: 992px) {
+  .form-area {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .form-area {
+    width: 280px;
+  }
+}

@@ -1,0 +1,56 @@
+.input-eye {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 3;
+  color: #44444483;
+}
+
+input::placeholder {
+  font-family: Heebo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.0025em;
+  text-align: left;
+  color: #bdbdbd !important;
+}
+
+@-moz-document url-prefix() {
+  .simple-input input.form-control {
+    padding: 0 0 0 20px !important;
+  }
+}
+
+textarea::placeholder {
+  font-family: Heebo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.0025em;
+  text-align: left;
+  color: #bdbdbd !important;
+}
+
+.error input {
+  border: 1px solid red !important;
+}
+
+.error input {
+  border: 1px solid red !important;
+}
+
+.error textarea {
+  border: 1px solid red !important;
+}
+
+.error select {
+  color: red !important;
+  font-size: 13px;
+  border: 1px solid red !important;
+}
+
+.error input::placeholder {
+  color: red !important;
+}

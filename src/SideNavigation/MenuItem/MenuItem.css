@@ -1,0 +1,96 @@
+/* font size */
+
+.accordion-button::after {
+  background-image: None !important;
+}
+
+.accordion-button {
+  background-color: #ffff !important;
+  height: 48px !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+  font-family: "Inter", sans-serif !important;
+  border: none !important;
+  transition: 1s;
+}
+.accordion-button:hover {
+  background-color: #f23534 !important;
+  color: #ffff !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #f23534 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05),
+    0 6px 20px 0 rgba(65, 151, 147, 0.018) !important;
+  position: relative;
+  transform: 0.5s !important;
+}
+
+.accordion-button .darrow {
+  transition: transform 20s ease;
+  /* Add a transition property for smooth rotation */
+}
+
+.accordion-button:not(.collapsed) .darrow {
+  rotate: 180deg;
+  margin-top: 11px;
+}
+
+.accordion-body {
+  padding: 0 !important;
+  background-color: #ffff !important;
+}
+
+.accordion-body li {
+  padding: 7px 0 7px 70px !important;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000 !important;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+  position: relative;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.accordion-body li::after {
+  position: absolute;
+  content: "";
+  height: 6px;
+  width: 6px;
+  border-radius: 100%;
+  background-color: #0000;
+  left: 46px;
+  top: 15px;
+}
+
+.accordion-body .active li::after {
+  position: absolute;
+  content: "";
+  height: 9px;
+  width: 9px;
+  border-radius: 100%;
+  background-color: #000;
+  left: 44.5px;
+  top: 14px;
+}
+
+.accordion-body .active li {
+  font-weight: 600 !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.accordion-button::after {
+  display: none !important;
+}
+
+.accordion-item {
+  margin: 8px 0 !important;
+}

@@ -1,0 +1,19 @@
+.page-item.active .page-link {
+  background-color: #f23534 !important;
+  margin: 0 5px;
+  color: aliceblue;
+  border: none;
+}
+
+.page-item .page-link {
+  margin: 0 5px;
+  border-radius: 6px;
+  border: solid 1.5px #f23534;
+  color: #444444;
+}
+
+@media screen and (max-width: 992px) {
+  .pagination-info {
+    display: none !important;
+  }
+}
