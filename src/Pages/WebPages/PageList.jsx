@@ -7,18 +7,18 @@ import { AiFillEye } from "react-icons/ai";
 import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 import { truncateAfterFourWords } from "../../Components/utility";
 
-const BlogList = () => {
-  const { deleteBlog, changeActiveStatusBlog } = useContext(AuthContext);
-  const blogData = useLoaderData();
+const PageList = () => {
+  const { deletePage, changeActiveStatusPage } = useContext(AuthContext);
+  const pageData = useLoaderData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
-  console.log("blogData", blogData);
+  console.log("pageData", pageData);
   // Function to delete a client
   const submitClientID = (id) => {
-    deleteBlog(id)
+    deletePage(id)
       .then((response) => {
-        navigate("/admin/blog");
+        navigate("/admin/pages ");
         // toast.success("Brand delete successful");
       })
       .catch((error) => {
@@ -36,10 +36,10 @@ const BlogList = () => {
       is_active = true;
     }
 
-    changeActiveStatusBlog(id, is_active)
+    changeActiveStatusPage(id, is_active)
       .then((response) => {
         // toast.success("Change status");
-        navigate("/admin/blog");
+        navigate("/admin/pages");
       })
       .catch((error) => {
         console.error("Error deleting user:", error);
@@ -48,12 +48,12 @@ const BlogList = () => {
   };
 
   const submitdataId = (id) => {
-    navigate(`edit-blog/${id}`);
+    navigate(`edit-page/${id}`);
   };
 
   // search filter
-  const filteredCategories = blogData.data.results.filter((data) =>
-    data.author_name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCategories = pageData.data.results.filter((data) =>
+    data.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // State for pagination
@@ -75,8 +75,8 @@ const BlogList = () => {
           <Link to={"/admin"} className="path-text ">
             Dashboard /
           </Link>{" "}
-          <span className="path-text-span">Blog List</span>
-          <div className="page-title">Blog List</div>
+          <span className="path-text-span">Page List</span>
+          <div className="page-title">Page List</div>
         </div>
       </div>
       {/* Table div */}
@@ -86,7 +86,7 @@ const BlogList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for blog name"
+              placeholder="Start typing to search for Page name"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -94,11 +94,11 @@ const BlogList = () => {
 
           <div className="d-flex align-items-center pb-2">
             <Link
-              to={"add-blog"}
+              to={"add-Page "}
               type="submit"
               className="Submit_button  w-100 text-center mt-1 mt-lg-2 mt-lg-0 fs-16-600 px-3 pt-2"
             >
-              Add New blog
+              Add New Page
             </Link>
           </div>
         </div>
@@ -110,12 +110,9 @@ const BlogList = () => {
               <tr className="blank_row  fs-16-600">
                 <td>Id</td>
                 <td>Image</td>
-                <td>Title</td>
-                <td>Author</td>
-                <td>View</td>
-                <td>Like</td>
-                <td>Comment</td>
-
+                <td>Name</td>
+                <td>Type</td>
+                <td>Is Active</td>
                 <td>Action</td>
               </tr>
 
@@ -126,19 +123,25 @@ const BlogList = () => {
                   <td className="">
                     <div className="table-img m-auto">
                       <img
-                        src={data.image_url}
+                        src={data.thumbnail_url}
                         alt=""
-                        className="img-fluid p-1 rounded"
+                        className="img-fluid p-1"
                       />
                     </div>
                   </td>
-                  <td>{truncateAfterFourWords(data.title)}</td>
-                  <td>{truncateAfterFourWords(data.author_name)}</td>
-                  <td>{data.view_count}</td>
-                  <td>{data.like_count}</td>
-                  <td>{data.post_comment.length}</td>
-
-                  {/* <td>
+                  <td>{data.title}</td>
+                  <td>
+                    {data.page_type === 0
+                      ? "Privacy Policy"
+                      : data.page_type === 1
+                      ? "Terms and Condition"
+                      : data.page_type === 2
+                      ? "About Us"
+                      : data.page_type === 3
+                      ? "General"
+                      : null}
+                  </td>
+                  <td>
                     <button
                       onClick={() =>
                         changeActiveStatus(data.id, data.is_active)
@@ -147,7 +150,7 @@ const BlogList = () => {
                     >
                       {data.is_active ? "Yes" : "No"}
                     </button>
-                  </td> */}
+                  </td>
                   <td className="acton-btn">
                     <button onClick={() => submitdataId(data.id)}>
                       <AiFillEye />
@@ -187,4 +190,4 @@ const BlogList = () => {
   );
 };
 
-export default BlogList;
+export default PageList;

@@ -98,7 +98,7 @@ const FaqList = () => {
               type="submit"
               className="Submit_button  w-100 text-center mt-1 mt-lg-2 mt-lg-0 fs-16-600 px-3 pt-2"
             >
-              Add New Group
+              Add New Faq
             </Link>
           </div>
         </div>

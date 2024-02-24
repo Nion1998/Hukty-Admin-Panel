@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const BlogLayout = () => {
+const ReasonLayout = () => {
   return (
     <div>
       <Outlet></Outlet>
@@ -9,4 +9,4 @@ const BlogLayout = () => {
   );
 };
 
-export default BlogLayout;
+export default ReasonLayout;

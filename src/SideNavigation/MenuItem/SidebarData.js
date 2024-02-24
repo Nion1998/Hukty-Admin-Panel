@@ -1,6 +1,6 @@
 import { BsChatRightText } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
-import { MdOutlineNotificationAdd } from "react-icons/md";
+import { MdOutlineFindInPage, MdOutlineNotificationAdd } from "react-icons/md";
 import { MdOutlineInventory } from "react-icons/md";
 import { CiBoxes } from "react-icons/ci";
 import { LuUsers2 } from "react-icons/lu";
@@ -30,10 +30,13 @@ export const SidebarData = [
 
   {
     id: 4,
-    title: "Orders",
+    title: "Sales",
     link: "orders",
     iconClass: <CiBoxes />, // Directly assign the icon without curly braces
-    submenus: [{ title: "Order List", link: "orders" }],
+    submenus: [
+      { title: "Order List", link: "orders" },
+      { title: "Reason List", link: "reason" },
+    ],
   },
   {
     id: 5,
@@ -49,15 +52,15 @@ export const SidebarData = [
   },
   {
     id: 7,
-    title: "Reviews & Ratings",
-    link: "reviews ",
+    title: "Blog",
     iconClass: <MdOutlineContacts />, // Directly assign the icon without curly braces
+    submenus: [{ title: "Blog List", link: "blog" }],
   },
   {
     id: 8,
-    title: "Refunds",
-    link: "refunds",
-    iconClass: <BsChatRightText />, // Directly assign the icon without curly braces
+    title: "Pages",
+    link: "pages",
+    iconClass: <MdOutlineFindInPage />, // Directly assign the icon without curly braces
   },
   {
     id: 10,

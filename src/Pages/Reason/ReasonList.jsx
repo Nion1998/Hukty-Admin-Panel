@@ -7,18 +7,18 @@ import { AiFillEye } from "react-icons/ai";
 import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 import { truncateAfterFourWords } from "../../Components/utility";
 
-const BlogList = () => {
-  const { deleteBlog, changeActiveStatusBlog } = useContext(AuthContext);
-  const blogData = useLoaderData();
+const ReasonList = () => {
+  const { deleteReason, changeActiveStatusReason } = useContext(AuthContext);
+  const reasonData = useLoaderData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
-  console.log("blogData", blogData);
+  console.log("reasonData", reasonData);
   // Function to delete a client
   const submitClientID = (id) => {
-    deleteBlog(id)
+    deleteReason(id)
       .then((response) => {
-        navigate("/admin/blog");
+        navigate("/admin/reason");
         // toast.success("Brand delete successful");
       })
       .catch((error) => {
@@ -36,10 +36,10 @@ const BlogList = () => {
       is_active = true;
     }
 
-    changeActiveStatusBlog(id, is_active)
+    changeActiveStatusReason(id, is_active)
       .then((response) => {
         // toast.success("Change status");
-        navigate("/admin/blog");
+        navigate("/admin/faq");
       })
       .catch((error) => {
         console.error("Error deleting user:", error);
@@ -48,12 +48,12 @@ const BlogList = () => {
   };
 
   const submitdataId = (id) => {
-    navigate(`edit-blog/${id}`);
+    navigate(`edit-faq/${id}`);
   };
 
   // search filter
-  const filteredCategories = blogData.data.results.filter((data) =>
-    data.author_name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCategories = reasonData.data.results.filter((data) =>
+    data.reason_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // State for pagination
@@ -75,8 +75,8 @@ const BlogList = () => {
           <Link to={"/admin"} className="path-text ">
             Dashboard /
           </Link>{" "}
-          <span className="path-text-span">Blog List</span>
-          <div className="page-title">Blog List</div>
+          <span className="path-text-span">Reason List</span>
+          <div className="page-title">Reason List</div>
         </div>
       </div>
       {/* Table div */}
@@ -86,7 +86,7 @@ const BlogList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for blog name"
+              placeholder="Start typing to search for reason name"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -94,11 +94,11 @@ const BlogList = () => {
 
           <div className="d-flex align-items-center pb-2">
             <Link
-              to={"add-blog"}
+              to={"add-reason"}
               type="submit"
               className="Submit_button  w-100 text-center mt-1 mt-lg-2 mt-lg-0 fs-16-600 px-3 pt-2"
             >
-              Add New blog
+              Add New Reason
             </Link>
           </div>
         </div>
@@ -109,13 +109,9 @@ const BlogList = () => {
               {/* table header */}
               <tr className="blank_row  fs-16-600">
                 <td>Id</td>
-                <td>Image</td>
-                <td>Title</td>
-                <td>Author</td>
-                <td>View</td>
-                <td>Like</td>
-                <td>Comment</td>
-
+                <td>Name</td>
+                <td>Type</td>
+                <td>Is Active</td>
                 <td>Action</td>
               </tr>
 
@@ -123,22 +119,19 @@ const BlogList = () => {
               {currentData.map((data, index) => (
                 <tr key={index} className="blank_row  ">
                   <td>{data.id}</td>
-                  <td className="">
-                    <div className="table-img m-auto">
-                      <img
-                        src={data.image_url}
-                        alt=""
-                        className="img-fluid p-1 rounded"
-                      />
-                    </div>
+                  <td>{truncateAfterFourWords(data.reason_name)}</td>
+                  <td>
+                    {data.reason_type === 0
+                      ? "Change Of Mind"
+                      : data.reason_type === 1
+                      ? "Item Out of Stock"
+                      : data.reason_type === 2
+                      ? "Customer Request"
+                      : data.reason_type === 3
+                      ? "By Admin"
+                      : null}
                   </td>
-                  <td>{truncateAfterFourWords(data.title)}</td>
-                  <td>{truncateAfterFourWords(data.author_name)}</td>
-                  <td>{data.view_count}</td>
-                  <td>{data.like_count}</td>
-                  <td>{data.post_comment.length}</td>
-
-                  {/* <td>
+                  <td>
                     <button
                       onClick={() =>
                         changeActiveStatus(data.id, data.is_active)
@@ -147,7 +140,7 @@ const BlogList = () => {
                     >
                       {data.is_active ? "Yes" : "No"}
                     </button>
-                  </td> */}
+                  </td>
                   <td className="acton-btn">
                     <button onClick={() => submitdataId(data.id)}>
                       <AiFillEye />
@@ -187,4 +180,4 @@ const BlogList = () => {
   );
 };
 
-export default BlogList;
+export default ReasonList;

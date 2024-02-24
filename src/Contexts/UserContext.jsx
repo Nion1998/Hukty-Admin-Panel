@@ -1,11 +1,10 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
-
 export const AuthContext = createContext();
-const token = `Token ${localStorage.getItem("_authToken")}`;
 
 const UserContext = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
+  const token = `Token ${localStorage.getItem("_authToken")}`;
   const login = (email, password) => {
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/auth/login/",
@@ -31,6 +30,7 @@ const UserContext = ({ children }) => {
   };
 
   const profileUp = (first_name, last_name, bio, image) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     console.log("add profile", first_name, last_name, bio, image);
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/auth/profile/",
@@ -47,7 +47,7 @@ const UserContext = ({ children }) => {
   };
 
   const changePassword = (old_password, password, confirm_password) => {
-    console.log(old_password, password, confirm_password);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/auth/change/password/",
       {
@@ -78,6 +78,7 @@ const UserContext = ({ children }) => {
   };
 
   const brandDelete = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}`,
       {
@@ -87,7 +88,7 @@ const UserContext = ({ children }) => {
   };
 
   const addBrand = (name, position, is_active, logo) => {
-    console.log("add category", name, position, is_active, logo);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/ ",
       {
@@ -111,8 +112,7 @@ const UserContext = ({ children }) => {
   };
 
   const editBrand = (id, data) => {
-    console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}/`,
       data,
@@ -122,7 +122,7 @@ const UserContext = ({ children }) => {
     );
   };
   const getBrand = () => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/`,
       {
@@ -131,7 +131,7 @@ const UserContext = ({ children }) => {
     );
   };
   const changeActionStatusBrand = (id, is_active) => {
-    console.log("user contest ", is_active);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}/`,
       { is_active },
@@ -143,7 +143,7 @@ const UserContext = ({ children }) => {
 
   // category.............................
   const getCategory = () => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/`,
       {
@@ -152,8 +152,7 @@ const UserContext = ({ children }) => {
     );
   };
   const addCategory = (name, is_active = true, parents, image) => {
-    console.log("add category", name, parents, is_active, image);
-
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/",
       {
@@ -177,7 +176,7 @@ const UserContext = ({ children }) => {
   };
 
   const categoryDelete = (id) => {
-    console.log(id);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
       {
@@ -186,7 +185,7 @@ const UserContext = ({ children }) => {
     );
   };
   const editCategory = (id, data) => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
       data,
@@ -197,7 +196,7 @@ const UserContext = ({ children }) => {
   };
 
   const changeActionStatusCategory = (id, is_active) => {
-    console.log("user contest ", is_active);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
       { is_active },
@@ -211,6 +210,7 @@ const UserContext = ({ children }) => {
 
   //Variant Group .......................
   const deleteVariantGroup = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}`,
       {
@@ -220,6 +220,7 @@ const UserContext = ({ children }) => {
   };
 
   const addVariantGroup = (group_name, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/",
       {
@@ -242,7 +243,7 @@ const UserContext = ({ children }) => {
 
   const editVariantGroup = (id, data) => {
     console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}/`,
       data,
@@ -252,7 +253,7 @@ const UserContext = ({ children }) => {
     );
   };
   const getVariantGroup = () => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/`,
       {
@@ -261,6 +262,7 @@ const UserContext = ({ children }) => {
     );
   };
   const changeActionStatusVariantGroup = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}/`,
       { is_active },
@@ -272,6 +274,7 @@ const UserContext = ({ children }) => {
 
   //Variant Group .......................
   const deleteVariantOption = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
       {
@@ -281,6 +284,7 @@ const UserContext = ({ children }) => {
   };
 
   const addVariantOption = (name, group, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/",
       {
@@ -303,8 +307,7 @@ const UserContext = ({ children }) => {
   };
 
   const editVariantOption = (id, data) => {
-    console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
       data,
@@ -314,7 +317,7 @@ const UserContext = ({ children }) => {
     );
   };
   const getVariantOption = () => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/`,
       {
@@ -323,6 +326,7 @@ const UserContext = ({ children }) => {
     );
   };
   const changeActionStatusVariantOption = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
       { is_active },
@@ -334,6 +338,7 @@ const UserContext = ({ children }) => {
 
   //Product .......................
   const deleteProduct = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}`,
       {
@@ -455,7 +460,7 @@ const UserContext = ({ children }) => {
     );
   };
   const getProduct = () => {
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/`,
       {
@@ -464,6 +469,7 @@ const UserContext = ({ children }) => {
     );
   };
   const changeActionStatus = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}`,
       { is_active },
@@ -483,6 +489,7 @@ const UserContext = ({ children }) => {
   };
 
   const cancelOrder = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
       {
@@ -494,6 +501,7 @@ const UserContext = ({ children }) => {
   //courier.........................
 
   const deleteCourier = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
       {
@@ -537,8 +545,7 @@ const UserContext = ({ children }) => {
   };
 
   const editCourier = (id, data) => {
-    console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
       data,
@@ -549,6 +556,7 @@ const UserContext = ({ children }) => {
   };
 
   const changeActionStatusCourier = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
       { is_active },
@@ -563,6 +571,7 @@ const UserContext = ({ children }) => {
   // coupon......................
 
   const deleteCoupon = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/${id}`,
       {
@@ -613,8 +622,7 @@ const UserContext = ({ children }) => {
   };
 
   const editCoupon = (id, data) => {
-    console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/${id}`,
       data,
@@ -625,6 +633,7 @@ const UserContext = ({ children }) => {
   };
 
   const changeActiveStatusCoupon = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}`,
       { is_active },
@@ -651,6 +660,7 @@ const UserContext = ({ children }) => {
     logo_small,
     logo_large
   ) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/utility/admin/global-settings/",
       {
@@ -676,6 +686,7 @@ const UserContext = ({ children }) => {
 
   // Faq
   const deleteFaq = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
       `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
       {
@@ -684,7 +695,7 @@ const UserContext = ({ children }) => {
     );
   };
   const addFaq = (question, answer, position, is_active) => {
-    console.log("addFaq", is_active);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
       "https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/",
       {
@@ -708,8 +719,7 @@ const UserContext = ({ children }) => {
   };
 
   const editFaq = (id, question, answer, position, is_active) => {
-    console.log();
-    // PATCH Method
+    const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
       { question, answer, position, is_active },
@@ -720,8 +730,239 @@ const UserContext = ({ children }) => {
   };
 
   const changeActiveStatusFaq = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
       `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
+      { is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  // Reason
+  const deleteReason = (id) => {
+    return axios.delete(
+      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+  const addReason = (reason_name, reason_type, is_active) => {
+    return axios.post(
+      "https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/",
+      {
+        reason_name,
+        reason_type,
+        is_active,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewReason = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const editReason = (id, reason_name, reason_type, is_active) => {
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      { reason_name, reason_type, is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const changeActiveStatusReason = (id, is_active) => {
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      { is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  // BLOG
+  const deleteBlog = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.delete(
+      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+  const addBlog = (
+    title,
+    content,
+    seo_title,
+    seo_keyword,
+    view_count,
+    seo_description,
+    image
+  ) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.post(
+      "https://shop-backend.privateyebd.com/api/v1/blog/admin/post/",
+      {
+        title,
+        content,
+        seo_title,
+        seo_keyword,
+        view_count,
+        seo_description,
+        image,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewBlog = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const editBlog = (
+    id,
+    title,
+    content,
+    seo_title,
+    seo_keyword,
+    view_count,
+    seo_description,
+    image
+  ) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      {
+        title,
+        content,
+        seo_title,
+        seo_keyword,
+        view_count,
+        seo_description,
+        image,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const changeActiveStatusBlog = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    console.log(is_active);
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      { is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  // Page
+  const deletePage = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.delete(
+      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+  const addPage = (
+    title,
+    video_url,
+    desc,
+    page_type,
+    is_active,
+    thumbnail,
+    attachment
+  ) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.post(
+      "https://shop-backend.privateyebd.com/api/v1/utility/admin/page/",
+      {
+        title,
+        video_url,
+        desc,
+        page_type,
+        is_active,
+        thumbnail,
+        attachment,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewPage = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const editPage = (
+    id,
+    title,
+    video_url,
+    desc,
+    page_type,
+    is_active,
+    thumbnail,
+    attachment
+  ) => {
+    console.log(
+      title,
+      video_url,
+      desc,
+      page_type,
+      is_active,
+      thumbnail,
+      attachment
+    );
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      {
+        title,
+        video_url,
+        desc,
+        page_type,
+        is_active,
+        thumbnail,
+        attachment,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const changeActiveStatusPage = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    console.log(is_active);
+    return axios.patch(
+      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -786,6 +1027,21 @@ const UserContext = ({ children }) => {
     editFaq,
     changeActiveStatusFaq,
     viewFaq,
+    deleteReason,
+    addReason,
+    viewReason,
+    editReason,
+    changeActiveStatusReason,
+    deleteBlog,
+    addBlog,
+    viewBlog,
+    editBlog,
+    changeActiveStatusBlog,
+    deletePage,
+    addPage,
+    viewPage,
+    editPage,
+    changeActiveStatusPage,
   };
 
   return (

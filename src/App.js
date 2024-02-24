@@ -42,6 +42,18 @@ import FaqLayout from "./Pages/FAQ/FaqLayout";
 import FaqList from "./Pages/FAQ/FaqList";
 import AddFaq from "./Pages/FAQ/AddFaq";
 import EditFaq from "./Pages/FAQ/EditFaq";
+import ReasonLayout from "./Pages/Reason/ReasonLayout";
+import ReasonList from "./Pages/Reason/ReasonList";
+import AddReason from "./Pages/Reason/AddReason";
+import EditReason from "./Pages/Reason/EditReason";
+import BlogLayout from "./Pages/Blog/BlogLayout";
+import BlogList from "./Pages/Blog/BlogList";
+import AddBlog from "./Pages/Blog/AddBlog";
+import EditBlog from "./Pages/Blog/EditBlog";
+import PageLayout from "./Pages/WebPages/PageLayout";
+import PageList from "./Pages/WebPages/PageList";
+import AddPage from "./Pages/WebPages/AddPage";
+import EditPage from "./Pages/WebPages/EditPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -323,9 +335,7 @@ function App() {
             },
           ],
         },
-
         //courier section
-
         {
           path: "couriers",
           element: <CouponLayout></CouponLayout>,
@@ -362,9 +372,7 @@ function App() {
             },
           ],
         },
-
         //customer section
-
         {
           path: "customer",
           element: <CustomerLayout></CustomerLayout>,
@@ -401,7 +409,6 @@ function App() {
             },
           ],
         },
-
         // profile section
         {
           path: "profile",
@@ -420,6 +427,7 @@ function App() {
           path: "/admin/profile/password-change",
           element: <ChangePass></ChangePass>,
         },
+        // Web info
         {
           path: "websiteinfo",
           loader: () => {
@@ -432,10 +440,6 @@ function App() {
             );
           },
           element: <WebsiteInfo></WebsiteInfo>,
-        },
-        {
-          path: "*",
-          element: <NotFoundPage></NotFoundPage>,
         },
         //faq section
         {
@@ -465,7 +469,95 @@ function App() {
             },
           ],
         },
-        //
+        //reason section
+        {
+          path: "reason",
+          element: <ReasonLayout></ReasonLayout>,
+          children: [
+            {
+              path: "",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <ReasonList></ReasonList>,
+            },
+            {
+              path: "add-reason",
+              element: <AddReason></AddReason>,
+            },
+            {
+              path: "edit-reason/:id",
+              element: <EditReason></EditReason>,
+            },
+          ],
+        },
+        //blog section
+        {
+          path: "blog",
+          element: <BlogLayout></BlogLayout>,
+          children: [
+            {
+              path: "",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://shop-backend.privateyebd.com/api/v1/blog/admin/post/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <BlogList></BlogList>,
+            },
+            {
+              path: "add-blog",
+              element: <AddBlog></AddBlog>,
+            },
+            {
+              path: "edit-blog/:id",
+              element: <EditBlog></EditBlog>,
+            },
+          ],
+        },
+        //blog section
+        {
+          path: "pages",
+          element: <PageLayout></PageLayout>,
+          children: [
+            {
+              path: "",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://shop-backend.privateyebd.com/api/v1/utility/admin/page/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <PageList></PageList>,
+            },
+            {
+              path: "add-page",
+              element: <AddPage></AddPage>,
+            },
+            {
+              path: "edit-page/:id",
+              element: <EditPage></EditPage>,
+            },
+          ],
+        },
+        // Not Found
+        {
+          path: "*",
+          element: <NotFoundPage></NotFoundPage>,
+        },
       ],
     },
   ]);
