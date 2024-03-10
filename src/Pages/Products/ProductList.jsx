@@ -8,7 +8,7 @@ import { AuthContext } from "../../Contexts/UserContext";
 import Pagination from "../../Components/Pagination/Pagination";
 
 const ProductList = () => {
-  const { categoryDelete, changeActionStatusProduct } = useContext(AuthContext);
+  const { deleteProduct, changeActionStatusProduct } = useContext(AuthContext);
   const productData = useLoaderData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,7 +17,7 @@ const ProductList = () => {
 
   // Function to delete a client
   const submitDelateID = (id) => {
-    categoryDelete(id)
+    deleteProduct(id)
       .then((response) => {
         navigate("/admin/products");
         toast.success("Delete success ");

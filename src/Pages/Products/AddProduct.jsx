@@ -152,7 +152,7 @@ const AddProduct = () => {
       .then((rsp) => {
         // toast.success("Coupon created successfully.");
         console.log("Coupon creation response:", rsp);
-        navigate("/admin/coupons");
+        navigate("/admin/products");
       })
       .catch((error) => {
         setError(error.response.data.errors);
