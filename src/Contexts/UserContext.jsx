@@ -301,16 +301,17 @@ const UserContext = ({ children }) => {
   const viewVariantOption = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}/`,
       { headers: { Authorization: token } }
     );
   };
 
-  const editVariantOption = (id, data) => {
+  const editVariantOption = (id, name, group) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
-      data,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}/`,
+      name,
+      group,
       {
         headers: { Authorization: token },
       }
@@ -1002,6 +1003,116 @@ const UserContext = ({ children }) => {
     );
   };
 
+  // User
+  const deleteUser = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.delete(
+      `https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/${id}/`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+  const addUser = (
+    first_name,
+    last_name,
+    email,
+    mobile,
+    password,
+    confirm_password,
+    gender,
+    role,
+    country
+  ) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.post(
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
+      {
+        first_name,
+        last_name,
+        email,
+        mobile,
+        password,
+        confirm_password,
+        gender,
+        role,
+        country,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewUser = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const editUser = (
+    id,
+    first_name,
+    last_name,
+    email,
+    mobile,
+    role,
+    country
+  ) => {
+    console.log("user-edit", id);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.patch(
+      `https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/${id}/`,
+      {
+        first_name,
+        last_name,
+        email,
+        mobile,
+        role,
+        country,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const changeActiveStatusUser = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    console.log(is_active);
+    return axios.patch(
+      `https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/${id}/`,
+      { is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewAddress = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://hukty-backend.bbclients.xyz/api/v1/auth/address/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const AssignCourier = (courier_id, orderId) => {
+    console.log("user-edit", courier_id);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.post(
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/order/${orderId}/assign_courier/`,
+      {
+        courier_id,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
   const authInfo = {
     login,
     uploadImage,
@@ -1074,6 +1185,13 @@ const UserContext = ({ children }) => {
     viewPage,
     editPage,
     changeActiveStatusPage,
+    deleteUser,
+    addUser,
+    viewUser,
+    editUser,
+    changeActiveStatusUser,
+    viewAddress,
+    AssignCourier,
   };
 
   return (

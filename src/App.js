@@ -56,6 +56,9 @@ import AddPage from "./Pages/WebPages/AddPage";
 import EditPage from "./Pages/WebPages/EditPage";
 import EditCoupon from "./Pages/Coupons/EditCoupon";
 import EditCourier from "./Pages/Courier/EditCourier";
+import AddUser from "./Pages/Customers/AddUser";
+import VariantOptionEdit from "./Pages/VariantOption/VariantOptionEdit";
+import EditUser from "./Pages/Customers/EditUser";
 
 function App() {
   const router = createBrowserRouter([
@@ -152,6 +155,15 @@ function App() {
             },
             {
               path: "view-categories/:id",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
               element: <EditCategory></EditCategory>,
             },
           ],
@@ -225,8 +237,17 @@ function App() {
               element: <AddNewOption></AddNewOption>,
             },
             {
-              path: "edit-variant-group/:id",
-              element: <EditVariantGroup></EditVariantGroup>,
+              path: "edit-variant-option/:id",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <VariantOptionEdit></VariantOptionEdit>,
             },
           ],
         },
@@ -296,6 +317,15 @@ function App() {
             },
             {
               path: "Edit-order/:id",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
               element: <EditOrder></EditOrder>,
             },
           ],
@@ -392,23 +422,32 @@ function App() {
               },
               element: <CustomerList></CustomerList>,
             },
-            // {
-            //   path: "add-courier",
-            //   loader: () => {
-            //     const token = `Token ${localStorage.getItem("_authToken")}`;
-            //     return fetch(
-            //       "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
-            //       {
-            //         headers: { Authorization: token },
-            //       }
-            //     );
-            //   },
-            //   element: <AddCourier></AddCourier>,
-            // },
-            // {
-            //   path: "edit-courier/:id",
-            //   element: <EditVariantGroup></EditVariantGroup>,
-            // },
+            {
+              path: "add-user",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/auth/country/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <AddUser></AddUser>,
+            },
+            {
+              path: "edit-user/:id",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/auth/country/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <EditUser></EditUser>,
+            },
           ],
         },
         // profile section

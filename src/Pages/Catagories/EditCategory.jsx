@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Dropzone from "react-dropzone";
@@ -16,6 +16,7 @@ const EditCategory = () => {
   const navigate = useNavigate();
   // for image upload
   const [selectedFile, setSelectedFile] = useState(null);
+  const categoriesData = useLoaderData();
 
   useEffect(() => {
     //wait for category id
@@ -39,8 +40,11 @@ const EditCategory = () => {
   if (!categoryData) {
     return;
   }
+  console.log("categoryData", categoryData);
 
-  console.log(categoryData);
+  if (!categoriesData) {
+    return;
+  }
 
   // image upload function
   const handleFileSelect = (files) => {
@@ -73,11 +77,11 @@ const EditCategory = () => {
 
     const form = event.target;
     const name = form.name.value;
-    const parents = form.parents.value;
+    const parent = form.parent.value;
     const image = imageId;
     const data = {
       name,
-      parents,
+      parent,
       image,
     };
 
@@ -167,12 +171,19 @@ const EditCategory = () => {
                 </div>
               </div>
 
-              <div className="col-12 col-md-6 ">
-                <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-16-600 mb-2">Parents</div>
-                  <Form.Select as="select" name="parents">
-                    <option value={0}>Tools</option>
-                    <option value={1}>High</option>
+              <div className="col-12 col-md-6">
+                <div className={`form-group ${error.id ? "error" : ""}`}>
+                  <div className="fs-16-600 mb-2">Parent</div>
+                  <Form.Select
+                    as="select"
+                    defaultValue={categoryData.parent}
+                    name="parent"
+                  >
+                    {categoriesData?.data?.results.map((item) => (
+                      <option key={item.id} value={parseInt(item.id)}>
+                        {item.name}
+                      </option>
+                    ))}
                   </Form.Select>
                 </div>
               </div>

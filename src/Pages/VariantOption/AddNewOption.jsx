@@ -64,14 +64,12 @@ const AddNewOption = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder={
-                      error.name ? error.name[0] : "Product group name"
-                    }
+                    placeholder={error.name ? error.name[0] : "option name"}
                   />
                 </div>
               </div>
 
-              <div className={`form-group ${error.id ? "error" : ""}`}>
+              <div className={`form-group ${error.group ? "error" : ""}`}>
                 <div className="fs-12-600 mb-2">Parents</div>
                 <Form.Select as="select" name="group">
                   {vGroupData?.data?.results.map((item) => (

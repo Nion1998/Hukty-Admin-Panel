@@ -50,7 +50,7 @@ const VariantOptionList = () => {
   };
 
   const submitdataId = (id) => {
-    navigate(`edit-variant-group/${id}`);
+    navigate(`edit-variant-option/${id}`);
   };
 
   // search filter
@@ -91,7 +91,7 @@ const VariantOptionList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for categories"
+              placeholder="Start typing to search "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

@@ -55,7 +55,7 @@ const ProductList = () => {
 
   // search filter
   const filteredCategories = productData.data.results.filter((data) =>
-    data.brand_name.toLowerCase().includes(searchQuery.toLowerCase())
+    data.product_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // Pagination filter
@@ -91,7 +91,7 @@ const ProductList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for categories"
+              placeholder="Start typing to search "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

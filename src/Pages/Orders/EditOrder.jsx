@@ -1,36 +1,62 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/UserContext";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 
 const EditOrder = () => {
-  const { viewOrder } = useContext(AuthContext);
+  const { viewOrder, viewAddress, AssignCourier } = useContext(AuthContext);
   const [orderData, setOrderData] = useState(null);
+  const [addressData, setAddress] = useState(null);
+  const [courierAssign, setCourierAssign] = useState(null);
   const [error, setError] = useState("");
   const { id } = useParams(); // Destructure id directly
   const navigate = useNavigate();
+  const courierData = useLoaderData();
+
+  const orderId = id;
 
   useEffect(() => {
-    // Check if id exists before fetching data
-    if (!id) {
-      return;
-    }
     // Fetch order data
-    viewOrder(id)
-      .then((response) => {
-        setOrderData(response.data.data);
-        // Handle the response or do something with the data
-      })
-      .catch((error) => {
-        setError("Error getting data"); // Set error state
-        console.error("Error getting data:", error);
-        // Handle the error (e.g., show a message to the user)
-      });
-  }, [id, viewOrder]); // Include viewOrder in dependency array
+    if (id) {
+      viewOrder(id)
+        .then((response) => {
+          setOrderData(response.data.data);
+          setCourierAssign(response.data.data.order_status);
+        })
+        .catch((error) => {
+          setError("Error getting order data");
+          console.error("Error getting order data:", error);
+        });
+    }
+  }, [id, viewOrder]);
+
+  // Fetch address data only when orderData is available
+  useEffect(() => {
+    if (orderData) {
+      viewAddress(orderData.shipping_address)
+        .then((response) => {
+          setAddress(response.data.data);
+        })
+        .catch((error) => {
+          setError("Error getting address data");
+          console.error("Error getting address data:", error);
+        });
+    }
+  }, [orderData, viewAddress]);
 
   if (!orderData) {
     return;
   }
+
+  if (!addressData) {
+    return;
+  }
+  if (!courierData) {
+    return;
+  }
+  console.log("courierData", courierData);
+
+  console.log("Address", addressData);
 
   console.log("edit order data ", orderData);
 
@@ -40,6 +66,19 @@ const EditOrder = () => {
 
   const statusChangeSubmit = (id) => {
     alert(id);
+  };
+  const AssignCourierSubmit = (courier_id) => {
+    AssignCourier(courier_id, orderId)
+      .then((rsp) => {
+        // toast.success("Update successful.");
+
+        setCourierAssign(3);
+      })
+      .catch((er) => {
+        alert(er.response.data.message);
+        console.error("Update error:", er);
+        // toast.error("Update Unsuccessful");
+      });
   };
 
   return (
@@ -79,7 +118,7 @@ const EditOrder = () => {
         )}
       </div>
       {/* Order info */}
-      <div className="row mt-4">
+      <div className="row mt-4 g-3">
         <div className="col-lg-9">
           <div className="card mb-3 shadow border-0 ">
             <div className=" p-3  d-flex  align-items-center justify-content-between">
@@ -101,57 +140,86 @@ const EditOrder = () => {
             </div>
           </div>
           <div className="card shadow border-0 ">
-            <div className="p-3 d-flex align-items-center justify-content-between">
+            <div className="p-3 d-inline d-md-flex align-items-center justify-content-between">
               <div className="fs-18-600">Product List</div>
-              <Dropdown>
-                <Dropdown.Toggle
-                  className=" bg-light text-dark dark d-flex align-items-center z-10 text-start "
-                  variant="success"
-                  id="dropdown-basic"
-                >
-                  <div className="fs-14-400 me-2">
-                    {" "}
-                    {orderData.order_status === 0 ? (
-                      <span>Pending</span>
-                    ) : orderData.order_status === 1 ? (
-                      <span>Processing</span>
-                    ) : orderData.order_status === 2 ? (
-                      <span>Shipped</span>
-                    ) : orderData.order_status === 3 ? (
-                      <span>Out of delivery</span>
-                    ) : orderData.order_status === 4 ? (
-                      <span>Delivered</span>
-                    ) : orderData.order_status === 5 ? (
-                      <span>Canceled</span>
-                    ) : orderData.order_status === 6 ? (
-                      <span>Refunded</span>
-                    ) : null}
-                  </div>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="fs-14-400">
-                  <Dropdown.Item onClick={() => statusChangeSubmit(0)}>
-                    Pending
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(1)}>
-                    Processing
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(2)}>
-                    Shipped
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(3)}>
-                    Out of delivery
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(4)}>
-                    Delivered
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(5)}>
-                    Canceled
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => statusChangeSubmit(6)}>
-                    Refunded
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <div className="d-flex">
+                <div>
+                  {courierAssign === 0 ? (
+                    <Dropdown className="me-2">
+                      <Dropdown.Toggle
+                        className=" bg-light text-dark dark d-flex align-items-center z-10 text-start "
+                        variant="success"
+                        id="dropdown-basic"
+                      >
+                        <div className="fs-14-400 me-2">Courier</div>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu className="fs-14-400">
+                        {courierData.data.results.map((data, index) => (
+                          <Dropdown.Item
+                            onClick={() => AssignCourierSubmit(data.id)}
+                          >
+                            {data.name}
+                          </Dropdown.Item>
+                        ))}
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  ) : (
+                    <h5 className="p-2 fs-16-600 me-2 text-light bg-primary">
+                      Courier Assigned
+                    </h5>
+                  )}
+                </div>
+
+                <Dropdown>
+                  <Dropdown.Toggle
+                    className=" bg-light text-dark dark d-flex align-items-center z-10 text-start "
+                    variant="success"
+                    id="dropdown-basic"
+                  >
+                    <div className="fs-14-400 me-2">
+                      {" "}
+                      {orderData.order_status === 0 ? (
+                        <span>Pending</span>
+                      ) : orderData.order_status === 1 ? (
+                        <span>Processing</span>
+                      ) : orderData.order_status === 2 ? (
+                        <span>Shipped</span>
+                      ) : orderData.order_status === 3 ? (
+                        <span>Out of delivery</span>
+                      ) : orderData.order_status === 4 ? (
+                        <span>Delivered</span>
+                      ) : orderData.order_status === 5 ? (
+                        <span>Canceled</span>
+                      ) : orderData.order_status === 6 ? (
+                        <span>Refunded</span>
+                      ) : null}
+                    </div>
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="fs-14-400">
+                    <Dropdown.Item onClick={() => statusChangeSubmit(0)}>
+                      Pending
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(1)}>
+                      Processing
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(2)}>
+                      Shipped
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(3)}>
+                      Out of delivery
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(4)}>
+                      Delivered
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(5)}>
+                      Canceled
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => statusChangeSubmit(6)}>
+                      Refunded
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
             </div>
             {/* table data show  */}
             <div className="overflow-table">
@@ -194,7 +262,7 @@ const EditOrder = () => {
             <p className="fs-14-400"> {orderData.customer_note}</p>
           </div>
         </div>
-        <div className="col-lg-3">
+        <div className="col-lg-3 ">
           <div className="card p-4 border-0 shadow">
             <div className="fs-18-600 "> Customer Information</div>
             <div className="fs-16-600 mt-2 mb-1">{orderData.customer_name}</div>
@@ -203,9 +271,20 @@ const EditOrder = () => {
           </div>
           <div className="card p-4 border-0 shadow mt-3">
             <div className="fs-18-600 "> Shipping Address</div>
-            <div className="fs-16-600 mt-2 mb-1">{orderData.customer_name}</div>
-            <div className="fs-16">{orderData.customer_mobile}</div>
-            <div className="fs-16">{orderData.customer_email}</div>
+            <div className="fs-16-600 mt-2 mb-1">
+              {" "}
+              {addressData.address_type === 0
+                ? "Home"
+                : addressData.address_type === 1
+                ? "Office"
+                : "Other"}
+            </div>
+            <div className="fs-14">{addressData.address}</div>
+            <div className="fs-14">
+              Zip code: {addressData.zip_code} , Road: {addressData.road} ,
+              Flat:
+              {addressData.flat}{" "}
+            </div>
           </div>
         </div>
       </div>

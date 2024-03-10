@@ -90,7 +90,7 @@ const CourierList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for categories"
+              placeholder="Start typing to search "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

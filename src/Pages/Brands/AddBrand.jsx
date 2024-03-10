@@ -87,7 +87,7 @@ const AddBrand = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder={error.name ? error.name[0] : "Product name"}
+                    placeholder={error.name ? error.name[0] : "name"}
                   />
                 </div>
               </div>
@@ -100,7 +100,7 @@ const AddBrand = () => {
                     name="position"
                     className="form-control"
                     placeholder={
-                      error.position ? error.position[0] : "Product position"
+                      error.position ? error.position[0] : "position"
                     }
                   />
                 </div>

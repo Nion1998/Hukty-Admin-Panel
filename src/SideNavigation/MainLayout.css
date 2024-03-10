@@ -63,3 +63,7 @@
   cursor: pointer;
   font-size: 25px;
 }
+
+.logo {
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out !important;
+}

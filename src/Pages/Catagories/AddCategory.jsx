@@ -100,7 +100,7 @@ const AddCategory = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder={error.name ? error.name[0] : "Product name"}
+                    placeholder={error.name ? error.name[0] : " name"}
                   />
                 </div>
               </div>

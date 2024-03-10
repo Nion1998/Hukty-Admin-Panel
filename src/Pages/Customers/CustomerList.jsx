@@ -7,7 +7,7 @@ import { AiFillEye } from "react-icons/ai";
 import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 
 const CourierList = () => {
-  const { deleteCourier, changeActionStatusCourier } = useContext(AuthContext);
+  const { deleteUser, changeActionStatusCourier } = useContext(AuthContext);
   const groupData = useLoaderData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,9 +15,9 @@ const CourierList = () => {
   console.log(groupData.data);
   // Function to delete a client
   const submitClientID = (id) => {
-    deleteCourier(id)
+    deleteUser(id)
       .then((response) => {
-        navigate("/admin/customers");
+        navigate("/admin/users");
         // toast.success("Brand delete successful");
       })
       .catch((error) => {
@@ -27,38 +27,16 @@ const CourierList = () => {
       });
   };
 
-  // change Active Status
-  const changeActiveStatus = (id, is_active) => {
-    alert(id);
-    if (is_active === true) {
-      is_active = false;
-    } else {
-      is_active = true;
-    }
-
-    console.log(is_active);
-
-    changeActionStatusCourier(id, is_active)
-      .then((response) => {
-        // toast.success("Change status");
-        navigate("/admin/couriers");
-      })
-      .catch((error) => {
-        console.log("Error deleting user:", error);
-        // toast.error("Change status error");
-      });
-  };
-
   const submitdataId = (id) => {
-    navigate(`edit-variant-group/${id}`);
+    navigate(`edit-user/${id}`);
   };
 
   // role filter
-  const filterRole = groupData.data.results.filter((data) => data.role === 1);
+  // const filterRole = groupData.data.results.filter((data) => data.role === 1);
 
-  console.log("role", filterRole);
+  // console.log("role", filterRole);
   // search filter
-  const filteredCategories = filterRole.filter((data) =>
+  const filteredCategories = groupData.data.results.filter((data) =>
     data.first_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -84,8 +62,8 @@ const CourierList = () => {
           <Link to={"/admin"} className="path-text ">
             Dashboard /
           </Link>{" "}
-          <span className="path-text-span">Customers</span>
-          <div className="page-title">Customer List</div>
+          <span className="path-text-span">Users</span>
+          <div className="page-title">Users List</div>
         </div>
       </div>
       {/* Table div */}
@@ -95,10 +73,19 @@ const CourierList = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="Start typing to search for categories"
+              placeholder="Start typing to search "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+          </div>
+          <div className="d-flex align-items-center pb-2 ms-auto">
+            <Link
+              to={"add-user"}
+              type="submit"
+              className="Submit_button  w-100 text-center mt-1 mt-lg-2 mt-lg-0 fs-16-600 px-3 pt-2"
+            >
+              Add New user
+            </Link>
           </div>
 
           <div className="d-flex align-items-center pb-2"></div>
