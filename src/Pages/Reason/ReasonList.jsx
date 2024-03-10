@@ -39,7 +39,7 @@ const ReasonList = () => {
     changeActiveStatusReason(id, is_active)
       .then((response) => {
         // toast.success("Change status");
-        navigate("/admin/faq");
+        navigate("/admin/reason");
       })
       .catch((error) => {
         console.error("Error deleting user:", error);
@@ -48,7 +48,7 @@ const ReasonList = () => {
   };
 
   const submitdataId = (id) => {
-    navigate(`edit-faq/${id}`);
+    navigate(`edit-reason/${id}`);
   };
 
   // search filter

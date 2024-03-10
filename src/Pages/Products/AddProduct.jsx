@@ -43,7 +43,11 @@ const AddProduct = () => {
       });
   }, []);
 
-  if (!brand && !category) {
+  if (!category) {
+    return;
+  }
+
+  if (!brand) {
     return;
   }
 
@@ -200,7 +204,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6">
                 <div className={`form-group ${error.quantity ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">quantity</div>
+                  <div className="fs-12-600 mb-2">Quantity</div>
                   <input
                     type="text"
                     name="quantity"
@@ -310,7 +314,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6">
                 <div className={`form-group ${error.unit_name ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Product unit_name</div>
+                  <div className="fs-12-600 mb-2">Product Unit Name</div>
                   <input
                     type="text"
                     name="unit_name"
@@ -326,7 +330,7 @@ const AddProduct = () => {
                 <div
                   className={`form-group ${error.unit_value ? "error" : ""}`}
                 >
-                  <div className="fs-12-600 mb-2">Product unit_value</div>
+                  <div className="fs-12-600 mb-2">Product Unit Value</div>
                   <input
                     type="number"
                     name="unit_value"
@@ -368,7 +372,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">is_featured</div>
+                  <div className="fs-12-600 mb-2">Is Featured</div>
                   <Form.Select as="select" name="is_featured">
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
@@ -378,7 +382,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Had variant</div>
+                  <div className="fs-12-600 mb-2">Had Variant</div>
                   <Form.Select as="select" name="has_variant">
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
@@ -388,7 +392,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Has promotion</div>
+                  <div className="fs-12-600 mb-2">Has Promotion</div>
                   <Form.Select as="select" name="has_promotion">
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
@@ -491,7 +495,7 @@ const AddProduct = () => {
                   }`}
                 >
                   <div className="fs-12-600 mb-2">Product Specification</div>
-                  <input
+                  <textarea
                     type="text"
                     name="product_specification"
                     className="form-control"
@@ -509,7 +513,7 @@ const AddProduct = () => {
                   className={`form-group ${error.description ? "error" : ""}`}
                 >
                   <div className="fs-12-600 mb-2">Product description</div>
-                  <input
+                  <textarea
                     type="text"
                     name="description"
                     className="form-control"
@@ -535,7 +539,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">is_active</div>
+                  <div className="fs-12-600 mb-2">Is Active</div>
                   <Form.Select as="select" name="is_active">
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>

@@ -24,7 +24,6 @@ export const SidebarData = [
       { title: "Variant Group", link: "variant-group" },
       { title: "Variant Option", link: "variant-option" },
       { title: "Products", link: "products" },
-      { title: "Coupons", link: "coupons" },
     ],
   },
 
@@ -35,6 +34,7 @@ export const SidebarData = [
     iconClass: <CiBoxes />, // Directly assign the icon without curly braces
     submenus: [
       { title: "Order List", link: "orders" },
+      { title: "Coupons", link: "coupons" },
       { title: "Reason List", link: "reason" },
     ],
   },
@@ -46,8 +46,8 @@ export const SidebarData = [
   },
   {
     id: 6,
-    title: "Customer",
-    link: "customer",
+    title: "Users",
+    link: "users",
     iconClass: <MdOutlineAdminPanelSettings />, // Directly assign the icon without curly braces
   },
   {

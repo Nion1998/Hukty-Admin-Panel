@@ -54,6 +54,8 @@ import PageLayout from "./Pages/WebPages/PageLayout";
 import PageList from "./Pages/WebPages/PageList";
 import AddPage from "./Pages/WebPages/AddPage";
 import EditPage from "./Pages/WebPages/EditPage";
+import EditCoupon from "./Pages/Coupons/EditCoupon";
+import EditCourier from "./Pages/Courier/EditCourier";
 
 function App() {
   const router = createBrowserRouter([
@@ -80,7 +82,7 @@ function App() {
           loader: () => {
             const token = `Token ${localStorage.getItem("_authToken")}`;
             return fetch(
-              "https://shop-backend.privateyebd.com/api/v1/report/admin/info",
+              "https://hukty-backend.bbclients.xyz/api/v1/report/admin/info",
               {
                 headers: { Authorization: token },
               }
@@ -99,7 +101,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/",
                   {
                     headers: { Authorization: token },
                   }
@@ -127,7 +129,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/",
                   {
                     headers: { Authorization: token },
                   }
@@ -140,7 +142,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/",
                   {
                     headers: { Authorization: token },
                   }
@@ -164,7 +166,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/",
                   {
                     headers: { Authorization: token },
                   }
@@ -177,7 +179,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/",
                   {
                     headers: { Authorization: token },
                   }
@@ -201,7 +203,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/",
                   {
                     headers: { Authorization: token },
                   }
@@ -214,7 +216,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/",
                   {
                     headers: { Authorization: token },
                   }
@@ -238,7 +240,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/",
                   {
                     headers: { Authorization: token },
                   }
@@ -251,7 +253,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/",
                   {
                     headers: { Authorization: token },
                   }
@@ -264,7 +266,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/",
                   {
                     headers: { Authorization: token },
                   }
@@ -284,7 +286,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/sales/admin/order",
+                  "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/order",
                   {
                     headers: { Authorization: token },
                   }
@@ -308,7 +310,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/coupon/",
                   {
                     headers: { Authorization: token },
                   }
@@ -321,7 +323,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/auth/admin/user/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
                   {
                     headers: { Authorization: token },
                   }
@@ -330,8 +332,8 @@ function App() {
               element: <AddCoupon></AddCoupon>,
             },
             {
-              path: "edit-variant-group/:id",
-              element: <EditVariantGroup></EditVariantGroup>,
+              path: "edit-coupon/:id",
+              element: <EditCoupon></EditCoupon>,
             },
           ],
         },
@@ -345,7 +347,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/",
                   {
                     headers: { Authorization: token },
                   }
@@ -358,7 +360,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/auth/admin/user/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
                   {
                     headers: { Authorization: token },
                   }
@@ -368,13 +370,13 @@ function App() {
             },
             {
               path: "edit-courier/:id",
-              element: <EditVariantGroup></EditVariantGroup>,
+              element: <EditCourier></EditCourier>,
             },
           ],
         },
         //customer section
         {
-          path: "customer",
+          path: "users",
           element: <CustomerLayout></CustomerLayout>,
           children: [
             {
@@ -382,7 +384,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/auth/admin/user/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
                   {
                     headers: { Authorization: token },
                   }
@@ -390,23 +392,23 @@ function App() {
               },
               element: <CustomerList></CustomerList>,
             },
-            {
-              path: "add-courier",
-              loader: () => {
-                const token = `Token ${localStorage.getItem("_authToken")}`;
-                return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/auth/admin/user/",
-                  {
-                    headers: { Authorization: token },
-                  }
-                );
-              },
-              element: <AddCourier></AddCourier>,
-            },
-            {
-              path: "edit-courier/:id",
-              element: <EditVariantGroup></EditVariantGroup>,
-            },
+            // {
+            //   path: "add-courier",
+            //   loader: () => {
+            //     const token = `Token ${localStorage.getItem("_authToken")}`;
+            //     return fetch(
+            //       "https://hukty-backend.bbclients.xyz/api/v1/auth/admin/user/",
+            //       {
+            //         headers: { Authorization: token },
+            //       }
+            //     );
+            //   },
+            //   element: <AddCourier></AddCourier>,
+            // },
+            // {
+            //   path: "edit-courier/:id",
+            //   element: <EditVariantGroup></EditVariantGroup>,
+            // },
           ],
         },
         // profile section
@@ -415,7 +417,7 @@ function App() {
           loader: () => {
             const token = `Token ${localStorage.getItem("_authToken")}`;
             return fetch(
-              "https://shop-backend.privateyebd.com/api/v1/auth/profile/",
+              "https://hukty-backend.bbclients.xyz/api/v1/auth/profile/",
               {
                 headers: { Authorization: token },
               }
@@ -433,7 +435,7 @@ function App() {
           loader: () => {
             const token = `Token ${localStorage.getItem("_authToken")}`;
             return fetch(
-              "https://shop-backend.privateyebd.com/api/v1/utility/admin/global-settings/",
+              "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/global-settings/",
               {
                 headers: { Authorization: token },
               }
@@ -451,7 +453,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/",
                   {
                     headers: { Authorization: token },
                   }
@@ -479,7 +481,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/",
                   {
                     headers: { Authorization: token },
                   }
@@ -507,7 +509,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/blog/admin/post/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/",
                   {
                     headers: { Authorization: token },
                   }
@@ -535,7 +537,7 @@ function App() {
               loader: () => {
                 const token = `Token ${localStorage.getItem("_authToken")}`;
                 return fetch(
-                  "https://shop-backend.privateyebd.com/api/v1/utility/admin/page/",
+                  "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/",
                   {
                     headers: { Authorization: token },
                   }

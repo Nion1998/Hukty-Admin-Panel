@@ -8,15 +8,15 @@ import { AuthContext } from "../../Contexts/UserContext";
 import Pagination from "../../Components/Pagination/Pagination";
 
 const ProductList = () => {
-  const { categoryDelete, changeActionStatusCategory, changeIs_menuStatus } =
-    useContext(AuthContext);
+  const { categoryDelete, changeActionStatusProduct } = useContext(AuthContext);
   const productData = useLoaderData();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
   console.log("product", productData);
+
   // Function to delete a client
-  const submitClientID = (id) => {
+  const submitDelateID = (id) => {
     categoryDelete(id)
       .then((response) => {
         navigate("/admin/products");
@@ -37,7 +37,7 @@ const ProductList = () => {
       is_active = true;
     }
 
-    changeActionStatusCategory(id, is_active)
+    changeActionStatusProduct(id, is_active)
       .then((response) => {
         navigate("/admin/products");
         toast.success("Change Active Status ");
@@ -49,26 +49,7 @@ const ProductList = () => {
       });
   };
 
-  const changeMenuStatus = (id, is_menu) => {
-    if (is_menu === true) {
-      is_menu = false;
-    } else {
-      is_menu = true;
-    }
-
-    changeIs_menuStatus(id, is_menu)
-      .then((response) => {
-        navigate("/admin/products");
-        toast.success("Change Active Status ");
-      })
-      .catch((error) => {
-        console.error("Error deleting user:", error);
-        toast.error("Change Active Status Error ");
-        // Handle the error
-      });
-  };
-
-  const submitCategoryId = (id) => {
+  const submitProductIdEdit = (id) => {
     navigate(`edit-product/${id}`);
   };
 
@@ -175,13 +156,13 @@ const ProductList = () => {
                   </td>
 
                   <td className="acton-btn">
-                    <button onClick={() => submitCategoryId(product.id)}>
+                    <button onClick={() => submitProductIdEdit(product.id)}>
                       <AiFillEye />
                     </button>
-                    <button onClick={() => submitCategoryId(product.id)}>
+                    <button onClick={() => submitProductIdEdit(product.id)}>
                       <MdOutlineModeEditOutline></MdOutlineModeEditOutline>
                     </button>
-                    <button onClick={() => submitClientID(product.id)}>
+                    <button onClick={() => submitDelateID(product.id)}>
                       <MdDeleteOutline></MdDeleteOutline>
                     </button>
                   </td>

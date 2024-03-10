@@ -15,7 +15,6 @@ const AddReason = () => {
     const form = event.target;
     const reason_name = form.reason_name.value;
     const reason_type = form.reason_type.value;
-
     const is_active = form.is_active.value;
     addReason(reason_name, reason_type, is_active)
       .then((rsp) => {

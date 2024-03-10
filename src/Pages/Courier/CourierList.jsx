@@ -29,7 +29,6 @@ const CourierList = () => {
 
   // change Active Status
   const changeActiveStatus = (id, is_active) => {
-    alert(id);
     if (is_active === true) {
       is_active = false;
     } else {
@@ -50,7 +49,7 @@ const CourierList = () => {
   };
 
   const submitdataId = (id) => {
-    navigate(`edit-variant-group/${id}`);
+    navigate(`edit-courier/${id}`);
   };
 
   // search filter

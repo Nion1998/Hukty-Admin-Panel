@@ -95,7 +95,11 @@ const AddProduct = () => {
       }
     }
 
-    console.log(imageIds);
+    if (!imageIds.length) {
+      productData.images.map((image) => {
+        imageIds.push(image.id);
+      });
+    }
 
     // for thumbnail
     let thumbnailID;
@@ -115,9 +119,6 @@ const AddProduct = () => {
       }
     }
 
-    // if (!imageIds) {
-    //   imageIds = websiteData.data.logo_small;
-    // }
     // if (!thumbnailID) {
     //   thumbnailID = websiteData.data.logo_small;
     // }
@@ -130,51 +131,51 @@ const AddProduct = () => {
     const product_variants = formDataArray;
     const name = form.name.value;
     const quantity = form.quantity.value;
-    // const cost = form.cost.value;
+    const cost = form.cost.value;
     const price = form.price.value;
     const images = imageIds;
     const thumbnail = thumbnailID;
-    // const unit_name = form.unit_name.value;
-    // const unit_value = form.unit_value.value;
-    // const brand = form.brand.value;
+    const unit_name = form.unit_name.value;
+    const unit_value = form.unit_value.value;
+    const brand = form.brand.value;
     const category = form.category.value;
     const is_featured = form.is_featured.value;
     const has_variant = form.has_variant.value;
-    // const has_promotion = form.has_promotion.value;
-    // const has_offer = form.has_offer.value;
-    // const offer_percent = form.offer_percent.value;
-    // const promotional_price = form.promotional_price.value;
-    // const promotions_start_date = form.promotions_start_date.value;
-    // const promotions_expiry_date = form.promotions_expiry_date.value;
-    // const product_specification = form.product_specification.value;
+    const has_promotion = form.has_promotion.value;
+    const has_offer = form.has_offer.value;
+    const offer_percent = form.offer_percent.value;
+    const promotional_price = form.promotional_price.value;
+    const promotions_start_date = form.promotions_start_date.value;
+    const promotions_expiry_date = form.promotions_expiry_date.value;
+    const product_specification = form.product_specification.value;
     const description = form.description.value;
-    // const stock_status = form.stock_status.value;
-    // const is_active = form.is_active.value;
+    const stock_status = form.stock_status.value;
+    const is_active = form.is_active.value;
     editProduct(
       id,
       product_variants,
       name,
       quantity,
-      //   cost,
+      cost,
       price,
       images,
       thumbnail,
-      //   unit_name,
-      //   unit_value,
-      //   brand,
+      unit_name,
+      unit_value,
+      brand,
       category,
       is_featured,
       has_variant,
-      //   has_promotion,
-      //   has_offer,
-      //   offer_percent,
-      //   promotional_price,
-      //   promotions_start_date,
-      //   promotions_expiry_date,
-      //   product_specification,
-      description
-      //   stock_status,
-      //   is_active
+      has_promotion,
+      has_offer,
+      offer_percent,
+      promotional_price,
+      promotions_start_date,
+      promotions_expiry_date,
+      product_specification,
+      description,
+      stock_status,
+      is_active
     )
       .then((rsp) => {
         // toast.success("Coupon created successfully.");
@@ -198,8 +199,8 @@ const AddProduct = () => {
           <Link to={"/admin/products"} className="path-text ">
             Products /
           </Link>{" "}
-          <span className="path-text-span">Add New Product</span>
-          <div className="page-title">Add New Product</div>
+          <span className="path-text-span">Product</span>
+          <div className="page-title">Product</div>
         </div>
       </div>
 
@@ -233,7 +234,7 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6">
                 <div className={`form-group ${error.quantity ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">quantity</div>
+                  <div className="fs-12-600 mb-2">Quantity</div>
                   <input
                     type="text"
                     name="quantity"
@@ -246,7 +247,7 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div className={`form-group ${error.cost ? "error" : ""}`}>
                   <div className="fs-12-600 mb-2">Product cost</div>
                   <input
@@ -257,7 +258,7 @@ const AddProduct = () => {
                     placeholder={error.cost ? error.cost[0] : "Product cost"}
                   />
                 </div>
-              </div> */}
+              </div>
 
               <div className="col-12 col-md-6">
                 <div className={`form-group ${error.price ? "error" : ""}`}>
@@ -273,7 +274,7 @@ const AddProduct = () => {
               </div>
 
               <div className="col-12 col-md-6">
-                <div className={`form-group ${error.id ? "error" : ""}`}>
+                <div className={`form-group ${error.category ? "error" : ""}`}>
                   <div className="fs-12-600 mb-2">Category</div>
                   <Form.Select
                     as="select"
@@ -284,6 +285,23 @@ const AddProduct = () => {
                       <option key={item.id} value={String(item.id)}>
                         {" "}
                         {/* Convert value to string */}
+                        {item.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-6">
+                <div className={`form-group ${error.brand ? "error" : ""}`}>
+                  <div className="fs-12-600 mb-2">Brand</div>
+                  <Form.Select
+                    as="select"
+                    name="brand"
+                    defaultValue={productData.brand}
+                  >
+                    {brand.data.results.map((item) => (
+                      <option key={item.id} value={parseInt(item.id)}>
                         {item.name}
                       </option>
                     ))}
@@ -313,12 +331,11 @@ const AddProduct = () => {
                               />
                             ))
                           ) : (
-                            <p className="m-auto fs-6">
-                              Drag and drop images here or{" "}
-                              <span className="btn text-color-263238 border p-1">
-                                Browse
-                              </span>
-                            </p>
+                            <div>
+                              {productData.images.map((data) => (
+                                <img src={data.document_url} />
+                              ))}
+                            </div>
                           )}
                         </div>
                       </div>
@@ -350,12 +367,7 @@ const AddProduct = () => {
                               />
                             ))
                           ) : (
-                            <p className="m-auto fs-6">
-                              Drag and drop images here or{" "}
-                              <span className="btn text-color-263238 border p-1">
-                                Browse
-                              </span>
-                            </p>
+                            <img src={productData.thumbnail_url} />
                           )}
                         </div>
                       </div>
@@ -364,31 +376,31 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div className={`form-group ${error.unit_name ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Product unit_name</div>
+                  <div className="fs-12-600 mb-2">Product Unit Name</div>
                   <input
                     type="text"
                     name="unit_name"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.unit_name}
                     placeholder={
-                      error.unit_name ? error.unit_name[0] : "Product unit_name"
+                      error.unit_name ? error.unit_name[0] : "Product Unit Name"
                     }
                   />
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${error.unit_value ? "error" : ""}`}
                 >
-                  <div className="fs-12-600 mb-2">Product unit_value</div>
+                  <div className="fs-12-600 mb-2">Product Unit Value</div>
                   <input
                     type="number"
                     name="unit_value"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.unit_value}
                     placeholder={
                       error.unit_value
                         ? error.unit_value[0]
@@ -396,28 +408,11 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
-
-              {/* <div className="col-12 col-md-6">
-                <div className={`form-group ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Brand</div>
-                  <Form.Select
-                    as="select"
-                    name="brand"
-                    defaultValue={productData.quantity}
-                  >
-                    {brand.data.results.map((item) => (
-                      <option key={item.id} value={parseInt(item.id)}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </div>
-              </div> */}
+              </div>
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">is_featured</div>
+                  <div className="fs-12-600 mb-2">Is Featured</div>
                   <Form.Select
                     as="select"
                     defaultValue={productData.is_featured}
@@ -430,8 +425,10 @@ const AddProduct = () => {
               </div>
 
               <div className="col-12 col-md-6 ">
-                <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">Had variant</div>
+                <div
+                  className={`form-group  ${error.has_variant ? "error" : ""}`}
+                >
+                  <div className="fs-12-600 mb-2">Has variant</div>
                   <Form.Select
                     as="select"
                     defaultValue={productData.has_variant}
@@ -443,35 +440,35 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              {/* <div className="col-12 col-md-6 ">
+              <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
                   <div className="fs-12-600 mb-2">Has promotion</div>
                   <Form.Select
                     as="select"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.has_promotion}
                     name="has_promotion"
                   >
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                   </Form.Select>
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6 ">
+              <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
                   <div className="fs-12-600 mb-2">Has Offer</div>
                   <Form.Select
                     as="select"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.has_offer}
                     name="has_offer"
                   >
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                   </Form.Select>
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${
                     error.promotional_price ? "error" : ""
@@ -482,7 +479,7 @@ const AddProduct = () => {
                     type="number"
                     name="promotional_price"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.promotional_price}
                     placeholder={
                       error.promotional_price
                         ? error.promotional_price[0]
@@ -490,9 +487,9 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${error.offer_percent ? "error" : ""}`}
                 >
@@ -501,7 +498,7 @@ const AddProduct = () => {
                     type="number"
                     name="offer_percent"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.offer_percent}
                     placeholder={
                       error.offer_percent
                         ? error.offer_percent[0]
@@ -509,9 +506,9 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${
                     error.promotions_start_date ? "error" : ""
@@ -522,7 +519,7 @@ const AddProduct = () => {
                     type="date"
                     name="promotions_start_date"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.promotions_start_date}
                     placeholder={
                       error.promotions_start_date
                         ? error.promotions_start_date[0]
@@ -530,9 +527,9 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${
                     error.promotions_expiry_date ? "error" : ""
@@ -543,7 +540,7 @@ const AddProduct = () => {
                     type="date"
                     name="promotions_expiry_date"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.promotions_expiry_date}
                     placeholder={
                       error.promotions_expiry_date
                         ? error.promotions_expiry_date[0]
@@ -551,20 +548,20 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
+              </div>
 
-              {/* <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${
                     error.product_specification ? "error" : ""
                   }`}
                 >
                   <div className="fs-12-600 mb-2">Product Specification</div>
-                  <input
+                  <textarea
                     type="text"
                     name="product_specification"
                     className="form-control"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.product_specification}
                     placeholder={
                       error.product_specification
                         ? error.product_specification[0]
@@ -572,14 +569,13 @@ const AddProduct = () => {
                     }
                   />
                 </div>
-              </div> */}
-
-              {/* <div className="col-12 col-md-6">
+              </div>
+              <div className="col-12 col-md-6">
                 <div
                   className={`form-group ${error.description ? "error" : ""}`}
                 >
                   <div className="fs-12-600 mb-2">Product description</div>
-                  <input
+                  <textarea
                     type="text"
                     name="description"
                     className="form-control"
@@ -587,18 +583,20 @@ const AddProduct = () => {
                     placeholder={
                       error.description
                         ? error.description[0]
-                        : "Product Specification"
+                        : "Product description"
                     }
                   />
                 </div>
               </div>
 
               <div className="col-12 col-md-6 ">
-                <div className={`form-group  ${error.id ? "error" : ""}`}>
+                <div
+                  className={`form-group  ${error.stock_status ? "error" : ""}`}
+                >
                   <div className="fs-12-600 mb-2">Stock Status</div>
                   <Form.Select
                     as="select"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.stock_status}
                     name="stock_status"
                   >
                     <option value={0}>In Stock</option>
@@ -610,34 +608,15 @@ const AddProduct = () => {
 
               <div className="col-12 col-md-6 ">
                 <div className={`form-group  ${error.id ? "error" : ""}`}>
-                  <div className="fs-12-600 mb-2">is_active</div>
+                  <div className="fs-12-600 mb-2">Is Active</div>
                   <Form.Select
                     as="select"
-                    defaultValue={productData.quantity}
+                    defaultValue={productData.is_active}
                     name="is_active"
                   >
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                   </Form.Select>
-                </div>
-              </div> */}
-
-              <div className="col-12 col-md-6">
-                <div
-                  className={`form-group ${error.description ? "error" : ""}`}
-                >
-                  <div className="fs-12-600 mb-2">Product description</div>
-                  <input
-                    type="text"
-                    name="description"
-                    className="form-control"
-                    defaultValue={productData.description}
-                    placeholder={
-                      error.description
-                        ? error.description[0]
-                        : "Product description"
-                    }
-                  />
                 </div>
               </div>
             </div>

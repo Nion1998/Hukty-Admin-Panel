@@ -7,7 +7,7 @@ const UserContext = ({ children }) => {
   const token = `Token ${localStorage.getItem("_authToken")}`;
   const login = (email, password) => {
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/auth/login/",
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/login/",
       {
         email,
         password,
@@ -18,7 +18,7 @@ const UserContext = ({ children }) => {
   const uploadImage = (formData) => {
     console.log("formdata", formData);
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/auth/documents/upload/",
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/documents/upload/",
       formData,
       {
         headers: {
@@ -33,7 +33,7 @@ const UserContext = ({ children }) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     console.log("add profile", first_name, last_name, bio, image);
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/auth/profile/",
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/profile/",
       {
         first_name,
         last_name,
@@ -49,7 +49,7 @@ const UserContext = ({ children }) => {
   const changePassword = (old_password, password, confirm_password) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/auth/change/password/",
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/change/password/",
       {
         old_password,
         password,
@@ -64,7 +64,7 @@ const UserContext = ({ children }) => {
   const getProfile = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      "https://shop-backend.privateyebd.com/api/v1/auth/profile/",
+      "https://hukty-backend.bbclients.xyz/api/v1/auth/profile/",
       {
         headers: { Authorization: token },
       }
@@ -80,7 +80,7 @@ const UserContext = ({ children }) => {
   const brandDelete = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/${id}`,
       {
         headers: { Authorization: token },
       }
@@ -90,7 +90,7 @@ const UserContext = ({ children }) => {
   const addBrand = (name, position, is_active, logo) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/ ",
+      "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/ ",
       {
         name,
         position,
@@ -106,7 +106,7 @@ const UserContext = ({ children }) => {
   const viewBrand = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -114,7 +114,7 @@ const UserContext = ({ children }) => {
   const editBrand = (id, data) => {
     const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/${id}/`,
       data,
       {
         headers: { Authorization: token },
@@ -124,7 +124,7 @@ const UserContext = ({ children }) => {
   const getBrand = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/`,
       {
         headers: { Authorization: token },
       }
@@ -133,7 +133,7 @@ const UserContext = ({ children }) => {
   const changeActionStatusBrand = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/brand/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/brand/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -145,7 +145,7 @@ const UserContext = ({ children }) => {
   const getCategory = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/`,
       {
         headers: { Authorization: token },
       }
@@ -154,7 +154,7 @@ const UserContext = ({ children }) => {
   const addCategory = (name, is_active = true, parents, image) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/",
+      "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/",
       {
         name,
         parents,
@@ -170,7 +170,7 @@ const UserContext = ({ children }) => {
   const viewCategory = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -178,7 +178,7 @@ const UserContext = ({ children }) => {
   const categoryDelete = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -187,7 +187,7 @@ const UserContext = ({ children }) => {
   const editCategory = (id, data) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/${id}/`,
       data,
       {
         headers: { Authorization: token },
@@ -198,7 +198,7 @@ const UserContext = ({ children }) => {
   const changeActionStatusCategory = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -212,7 +212,7 @@ const UserContext = ({ children }) => {
   const deleteVariantGroup = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/${id}`,
       {
         headers: { Authorization: token },
       }
@@ -222,7 +222,7 @@ const UserContext = ({ children }) => {
   const addVariantGroup = (group_name, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/",
+      "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/",
       {
         group_name,
         is_active,
@@ -236,7 +236,7 @@ const UserContext = ({ children }) => {
   const viewVariantGroup = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -245,7 +245,7 @@ const UserContext = ({ children }) => {
     console.log();
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/${id}/`,
       data,
       {
         headers: { Authorization: token },
@@ -255,7 +255,7 @@ const UserContext = ({ children }) => {
   const getVariantGroup = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/`,
       {
         headers: { Authorization: token },
       }
@@ -264,7 +264,7 @@ const UserContext = ({ children }) => {
   const changeActionStatusVariantGroup = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-group/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-group/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -276,7 +276,7 @@ const UserContext = ({ children }) => {
   const deleteVariantOption = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
       {
         headers: { Authorization: token },
       }
@@ -286,7 +286,7 @@ const UserContext = ({ children }) => {
   const addVariantOption = (name, group, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/",
+      "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/",
       {
         name,
         group,
@@ -301,7 +301,7 @@ const UserContext = ({ children }) => {
   const viewVariantOption = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
       { headers: { Authorization: token } }
     );
   };
@@ -309,7 +309,7 @@ const UserContext = ({ children }) => {
   const editVariantOption = (id, data) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
       data,
       {
         headers: { Authorization: token },
@@ -319,7 +319,7 @@ const UserContext = ({ children }) => {
   const getVariantOption = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/`,
       {
         headers: { Authorization: token },
       }
@@ -328,7 +328,7 @@ const UserContext = ({ children }) => {
   const changeActionStatusVariantOption = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -340,7 +340,7 @@ const UserContext = ({ children }) => {
   const deleteProduct = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/${id}`,
       {
         headers: { Authorization: token },
       }
@@ -373,7 +373,7 @@ const UserContext = ({ children }) => {
     is_active
   ) => {
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/",
+      "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/",
       {
         product_variants,
         name,
@@ -408,7 +408,7 @@ const UserContext = ({ children }) => {
   const viewProduct = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/${id}`,
       { headers: { Authorization: token } }
     );
   };
@@ -418,41 +418,55 @@ const UserContext = ({ children }) => {
     product_variants,
     name,
     quantity,
+    cost,
     price,
     images,
     thumbnail,
+    unit_name,
+    unit_value,
+    brand,
     category,
     is_featured,
     has_variant,
-    description
+    has_promotion,
+    has_offer,
+    offer_percent,
+    promotional_price,
+    promotions_start_date,
+    promotions_expiry_date,
+    product_specification,
+    description,
+    stock_status,
+    is_active
   ) => {
-    console.log(
-      id,
-      product_variants,
-      name,
-      quantity,
-      price,
-      images,
-      thumbnail,
-      category,
-      is_featured,
-      has_variant,
-      description
-    );
+    console.log("product_variants", product_variants);
     // PATCH Method
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/${id}/`,
       {
         product_variants,
         name,
         quantity,
+        cost,
         price,
         images,
         thumbnail,
+        unit_name,
+        unit_value,
+        brand,
         category,
         is_featured,
         has_variant,
+        has_promotion,
+        has_offer,
+        offer_percent,
+        promotional_price,
+        promotions_start_date,
+        promotions_expiry_date,
+        product_specification,
         description,
+        stock_status,
+        is_active,
       },
       {
         headers: { Authorization: token },
@@ -462,16 +476,16 @@ const UserContext = ({ children }) => {
   const getProduct = () => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/`,
       {
         headers: { Authorization: token },
       }
     );
   };
-  const changeActionStatus = (id, is_active) => {
+  const changeActionStatusProduct = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/product/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -483,7 +497,7 @@ const UserContext = ({ children }) => {
   const viewOrder = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/order/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/order/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -491,7 +505,7 @@ const UserContext = ({ children }) => {
   const cancelOrder = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/variant-option/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/variant-option/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -503,7 +517,7 @@ const UserContext = ({ children }) => {
   const deleteCourier = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -520,7 +534,7 @@ const UserContext = ({ children }) => {
     is_active
   ) => {
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/",
+      "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/",
       {
         name,
         website,
@@ -539,16 +553,34 @@ const UserContext = ({ children }) => {
   const viewCourier = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/${id}/`,
       { headers: { Authorization: token } }
     );
   };
 
-  const editCourier = (id, data) => {
+  const editCourier = (
+    id,
+    name,
+    website,
+    email,
+    contact_number,
+    address,
+    parcel_quantity,
+    is_active
+  ) => {
     const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
-      data,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/${id}/`,
+      {
+        name,
+        website,
+        email,
+        contact_number,
+        address,
+        parcel_quantity,
+        is_active,
+      },
+
       {
         headers: { Authorization: token },
       }
@@ -558,7 +590,7 @@ const UserContext = ({ children }) => {
   const changeActionStatusCourier = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/courier/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/courier/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -573,7 +605,7 @@ const UserContext = ({ children }) => {
   const deleteCoupon = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/coupon/${id}`,
       {
         headers: { Authorization: token },
       }
@@ -593,7 +625,7 @@ const UserContext = ({ children }) => {
     is_active
   ) => {
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/",
+      "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/coupon/",
       {
         coupon_title,
         coupon_type,
@@ -616,7 +648,7 @@ const UserContext = ({ children }) => {
   const viewCoupon = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/coupon/${id}`,
       { headers: { Authorization: token } }
     );
   };
@@ -624,7 +656,7 @@ const UserContext = ({ children }) => {
   const editCoupon = (id, data) => {
     const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/coupon/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/coupon/${id}`,
       data,
       {
         headers: { Authorization: token },
@@ -635,7 +667,7 @@ const UserContext = ({ children }) => {
   const changeActiveStatusCoupon = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/inventory/admin/category/${id}`,
+      `https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/category/${id}`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -662,7 +694,7 @@ const UserContext = ({ children }) => {
   ) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/utility/admin/global-settings/",
+      "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/global-settings/",
       {
         site_name,
         website_url,
@@ -688,7 +720,7 @@ const UserContext = ({ children }) => {
   const deleteFaq = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -697,7 +729,7 @@ const UserContext = ({ children }) => {
   const addFaq = (question, answer, position, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/",
+      "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/",
       {
         question,
         answer,
@@ -713,7 +745,7 @@ const UserContext = ({ children }) => {
   const viewFaq = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -721,7 +753,7 @@ const UserContext = ({ children }) => {
   const editFaq = (id, question, answer, position, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`; // PATCH Method
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/${id}/`,
       { question, answer, position, is_active },
       {
         headers: { Authorization: token },
@@ -732,7 +764,7 @@ const UserContext = ({ children }) => {
   const changeActiveStatusFaq = (id, is_active) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/faq/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/faq/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -743,7 +775,7 @@ const UserContext = ({ children }) => {
   // Reason
   const deleteReason = (id) => {
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -751,7 +783,7 @@ const UserContext = ({ children }) => {
   };
   const addReason = (reason_name, reason_type, is_active) => {
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/",
+      "https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/",
       {
         reason_name,
         reason_type,
@@ -766,14 +798,14 @@ const UserContext = ({ children }) => {
   const viewReason = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/${id}/`,
       { headers: { Authorization: token } }
     );
   };
 
   const editReason = (id, reason_name, reason_type, is_active) => {
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/${id}/`,
       { reason_name, reason_type, is_active },
       {
         headers: { Authorization: token },
@@ -783,7 +815,7 @@ const UserContext = ({ children }) => {
 
   const changeActiveStatusReason = (id, is_active) => {
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/sales/admin/reason/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/sales/admin/reason/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -795,7 +827,7 @@ const UserContext = ({ children }) => {
   const deleteBlog = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -812,7 +844,7 @@ const UserContext = ({ children }) => {
   ) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/blog/admin/post/",
+      "https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/",
       {
         title,
         content,
@@ -831,7 +863,7 @@ const UserContext = ({ children }) => {
   const viewBlog = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -848,7 +880,7 @@ const UserContext = ({ children }) => {
   ) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/${id}/`,
       {
         title,
         content,
@@ -868,7 +900,7 @@ const UserContext = ({ children }) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     console.log(is_active);
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/blog/admin/post/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/blog/admin/post/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -880,7 +912,7 @@ const UserContext = ({ children }) => {
   const deletePage = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.delete(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/${id}/`,
       {
         headers: { Authorization: token },
       }
@@ -897,7 +929,7 @@ const UserContext = ({ children }) => {
   ) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.post(
-      "https://shop-backend.privateyebd.com/api/v1/utility/admin/page/",
+      "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/",
       {
         title,
         video_url,
@@ -916,7 +948,7 @@ const UserContext = ({ children }) => {
   const viewPage = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/${id}/`,
       { headers: { Authorization: token } }
     );
   };
@@ -942,7 +974,7 @@ const UserContext = ({ children }) => {
     );
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/${id}/`,
       {
         title,
         video_url,
@@ -962,7 +994,7 @@ const UserContext = ({ children }) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     console.log(is_active);
     return axios.patch(
-      `https://shop-backend.privateyebd.com/api/v1/utility/admin/page/${id}/`,
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/page/${id}/`,
       { is_active },
       {
         headers: { Authorization: token },
@@ -1007,7 +1039,7 @@ const UserContext = ({ children }) => {
     viewProduct,
     editProduct,
     getProduct,
-    changeActionStatus,
+    changeActionStatusProduct,
     viewOrder,
     cancelOrder,
     deleteCoupon,
