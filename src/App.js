@@ -59,6 +59,10 @@ import EditCourier from "./Pages/Courier/EditCourier";
 import AddUser from "./Pages/Customers/AddUser";
 import VariantOptionEdit from "./Pages/VariantOption/VariantOptionEdit";
 import EditUser from "./Pages/Customers/EditUser";
+import BannerLayout from "./Pages/Banner/BannerLayout";
+import BannerList from "./Pages/Banner/BannerList";
+import BannerAdd from "./Pages/Banner/BannerAdd";
+import BannerEdit from "./Pages/Banner/BannerEdit";
 
 function App() {
   const router = createBrowserRouter([
@@ -566,7 +570,7 @@ function App() {
             },
           ],
         },
-        //blog section
+        //Page section
         {
           path: "pages",
           element: <PageLayout></PageLayout>,
@@ -591,6 +595,34 @@ function App() {
             {
               path: "edit-page/:id",
               element: <EditPage></EditPage>,
+            },
+          ],
+        },
+        //Banner section
+        {
+          path: "banners",
+          element: <BannerLayout></BannerLayout>,
+          children: [
+            {
+              path: "",
+              loader: () => {
+                const token = `Token ${localStorage.getItem("_authToken")}`;
+                return fetch(
+                  "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/",
+                  {
+                    headers: { Authorization: token },
+                  }
+                );
+              },
+              element: <BannerList></BannerList>,
+            },
+            {
+              path: "add-banner",
+              element: <BannerAdd></BannerAdd>,
+            },
+            {
+              path: "edit-banner/:id",
+              element: <BannerEdit></BannerEdit>,
             },
           ],
         },

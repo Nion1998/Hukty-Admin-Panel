@@ -69,6 +69,7 @@ export const SidebarData = [
     submenus: [
       { title: "Website Information", link: "websiteinfo" },
       { title: "FAQ", link: "faq" },
+      { title: "Banner", link: "Banners" },
     ],
   },
 ];

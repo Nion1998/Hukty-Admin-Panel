@@ -3,7 +3,7 @@ import { AuthContext } from "../Contexts/UserContext";
 import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateAdmin = ({ children }) => {
-  const { getProfile, setUserProfile } = useContext(AuthContext);
+  const { getProfile, setUserProfile, logOut } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
@@ -17,6 +17,7 @@ const PrivateAdmin = ({ children }) => {
         setLoading(true);
       },
       (er) => {
+        logOut();
         console.log(er.response.data);
         setErr(er.response.data);
       }

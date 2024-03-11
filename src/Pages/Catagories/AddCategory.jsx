@@ -11,7 +11,7 @@ const AddCategory = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const categoriesData = useLoaderData();
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [selectedParent, setSelectedParent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -135,26 +135,6 @@ const AddCategory = () => {
                       </div>
                     )}
                   </Dropzone>
-                </div>
-              </div>
-
-              <div className="col-12 d-flex align-items-center">
-                <div className="fs-16">Is Active ?</div>
-                <div className="form-check d-flex align-items-center">
-                  <input
-                    type="checkbox"
-                    className="checkbox"
-                    name="is_active"
-                    id="is_active_checkbox"
-                    checked={isActive}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label
-                    className="form-check-label ms-2"
-                    htmlFor="is_active_checkbox"
-                  >
-                    Yes
-                  </label>
                 </div>
               </div>
             </div>

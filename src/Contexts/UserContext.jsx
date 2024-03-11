@@ -1091,6 +1091,70 @@ const UserContext = ({ children }) => {
     );
   };
 
+  // Banner
+  const deleteBanner = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.delete(
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/${id}/`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+  const addBanner = (title, url, description, image) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.post(
+      "https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/",
+      {
+        title,
+        url,
+        description,
+        image,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const viewBanner = (id) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.get(
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/${id}/`,
+      { headers: { Authorization: token } }
+    );
+  };
+
+  const editBanner = (id, title, url, description, image) => {
+    console.log("user-edit", image);
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    return axios.patch(
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/${id}/`,
+      {
+        title,
+        url,
+        description,
+        image,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const changeActiveStatusBanner = (id, is_active) => {
+    const token = `Token ${localStorage.getItem("_authToken")}`;
+    console.log(is_active);
+    return axios.patch(
+      `https://hukty-backend.bbclients.xyz/api/v1/utility/admin/banner/${id}/`,
+      { is_active },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  // Address
   const viewAddress = (id) => {
     const token = `Token ${localStorage.getItem("_authToken")}`;
     return axios.get(
@@ -1190,6 +1254,11 @@ const UserContext = ({ children }) => {
     viewUser,
     editUser,
     changeActiveStatusUser,
+    deleteBanner,
+    addBanner,
+    viewBanner,
+    editBanner,
+    changeActiveStatusBanner,
     viewAddress,
     AssignCourier,
   };
