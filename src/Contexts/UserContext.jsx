@@ -371,7 +371,8 @@ const UserContext = ({ children }) => {
     product_specification,
     description,
     stock_status,
-    is_active
+    is_active,
+    sku
   ) => {
     return axios.post(
       "https://hukty-backend.bbclients.xyz/api/v1/inventory/admin/product/",
@@ -399,6 +400,7 @@ const UserContext = ({ children }) => {
         description,
         stock_status,
         is_active,
+        sku,
       },
       {
         headers: { Authorization: token },
@@ -438,7 +440,8 @@ const UserContext = ({ children }) => {
     product_specification,
     description,
     stock_status,
-    is_active
+    is_active,
+    sku
   ) => {
     console.log("product_variants", product_variants);
     // PATCH Method
@@ -468,6 +471,7 @@ const UserContext = ({ children }) => {
         description,
         stock_status,
         is_active,
+        sku,
       },
       {
         headers: { Authorization: token },

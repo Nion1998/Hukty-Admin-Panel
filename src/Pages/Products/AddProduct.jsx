@@ -124,6 +124,7 @@ const AddProduct = () => {
     const description = form.description.value;
     const stock_status = form.stock_status.value;
     const is_active = form.is_active.value;
+    const sku = form.sku.value;
     addProduct(
       product_variants,
       name,
@@ -147,7 +148,8 @@ const AddProduct = () => {
       product_specification,
       description,
       stock_status,
-      is_active
+      is_active,
+      sku
     )
       .then((rsp) => {
         // toast.success("Coupon created successfully.");
@@ -544,6 +546,18 @@ const AddProduct = () => {
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                   </Form.Select>
+                </div>
+              </div>
+
+              <div className="col-12 col-md-6">
+                <div className={`form-group ${error.sku ? "error" : ""}`}>
+                  <div className="fs-12-600 mb-2">SKU</div>
+                  <input
+                    type="text"
+                    name="sku"
+                    className="form-control"
+                    placeholder={error.sku ? error.sku[0] : "Product sku"}
+                  />
                 </div>
               </div>
             </div>

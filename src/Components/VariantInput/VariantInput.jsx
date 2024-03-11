@@ -43,16 +43,18 @@ const VariantInput = ({
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-12 col-md-6 col-lg-3">
-            <div className="form-group">
+            <div className="group">
               <div className="fs-12-600 mb-2">Title</div>
-              <input
-                type="text"
+              <Form.Select
+                as="select"
                 name="title"
-                className="form-control"
                 value={formData.title}
                 onChange={handleInputChange}
-                placeholder="Title"
-              />
+              >
+                <option>--</option>
+                <option value="size">Size</option>
+                <option value="color">Color</option>
+              </Form.Select>
             </div>
           </div>
 
